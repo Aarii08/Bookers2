@@ -1,2 +1,55 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+      <h2>User info</h2>
+      <p>画像</p>
+
+      <span>name</span>
+      <span>< % ></span>
+
+      <sapn>introduction</sapn>
+      <sapn>< % %></sapn>
+
+      <div class="row">
+        <i class="btn btn-primary btn-block fa-solid fa-user-gear"></i>
+      </div>
+
+
+      <h2>New book</h2>
+      <%= form_with model: Book.new do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title %>
+
+        <p>Opinion</p>
+        <%= f.text_area :body %>
+
+        <%= f.submit 'Create Book', class: "btn btn-success" %>
+
+      <% end %>
+    </div>
+
+<% @books.each do |book| %>
+    <div class="col-8 offset-1">
+      <h2>Books</h2>
+      <table class="table table-hover">
+        <tbody>
+		      <tr>
+			      <td></td>
+			      <td>Title</td>
+			      <td>Opinion</td>
+		      </tr>
+		      <tr>
+			      <td><%= link_to "", user_path(:id) %></td>
+			      <td><%= link_to "@book.title", books_path(:id) %></td>
+			      <td>< opinion %></td>
+		      </tr>
+	      </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<% end %>

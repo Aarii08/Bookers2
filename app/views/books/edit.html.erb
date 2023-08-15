@@ -1,30 +1,27 @@
+<h1>Books#edit</h1>
+
+
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
       <h2>Editing Book</h2>
 
-        <%= form_with model: @book do |f| %>
+        <%= form_with model: @book, method: :patch do |f| %>
 
           <p>Title</p>
             <%= f.text_field :title %>
 
           <p>Opinion</p>
             <%= f.text_area :body %>
-            <p>
-            <%= link_to 'Update Book', books_path(params[:id]), class: "btn btn-success" %>
-            </p>
+          <p>
+            <%= f.submit 'Update Book', class: "btn btn-success" %>
+          </p>
         <% end %>
 
-        <%= link_to "Show", book_path(params[:id]) %>
-          |
-        <%= link_to "Back", books_path %>
+          <%= link_to "Show", book_path(params[:id]) %>
+            |
+          <%= link_to "Back", books_path %>
 
     </div>
   </div>
 </div>
-
-
-
-
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>

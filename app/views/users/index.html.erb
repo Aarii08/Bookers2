@@ -7,7 +7,7 @@
     <div class="col-3 md-3">
 
       <h2>User info</h2>
-      <p> 画像表示</p>
+      <p><%= image_tag @user.get_profile_image(100,100) %></p></p>
       <table class="table">
         <tbody>
           <tr>
@@ -23,7 +23,7 @@
 
 
       <div class="row">
-      <%= link_to edit_user_path(:id), class: "btn btn-outline-secondary btn-block" do %>
+      <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
        <i class="fa-solid fa-user-gear"></i>
       <% end %>
 
@@ -52,7 +52,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>image</th>
+            <th></th>
             <th>name</th>
             <th></th>
           </tr>
@@ -61,7 +61,7 @@
         <tbody>
           <% @users.each do |user| %>
 		      <tr>
-			      <td>></td>
+			      <td><%= image_tag @user.get_profile_image(100,100) %></p></td>
 			      <td><%= @user.name %></td>
 			      <td><%= link_to "show", user_path(current_user.id) %></td>
 		      </tr>

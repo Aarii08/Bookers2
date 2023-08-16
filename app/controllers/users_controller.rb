@@ -20,13 +20,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-    # 保存に成功したとき
       flash[:notice] = "updated user successfully!!"
       redirect_to user_path(params[:id])
     else
-    # 保存に失敗したとき
       flash.now[:alert] = "error prohibited this obj from being saved:"
-      render :show
+      render :edit
     end
   end
 

@@ -13,8 +13,10 @@ class BooksController < ApplicationController
       flash[:notice] = "created book successfully!!"
       redirect_to book_path(@book.id)
     else
+      @user = current_user
+      @books = Book.all
       flash.now[:alert] = "error prohibited this obj from being saved:"
-      render :show
+      render :index
     end
   end
 
@@ -31,14 +33,13 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-    # 保存に成功したとき
       flash[:notice] = "updated book successfully!!"
       redirect_to book_path(@book.id)
     else
-    # 保存に失敗したとき
       flash.now[:alert] = "error prohibited this obj from being saved:"
-      render :show
+      render :edit
     end
+
   end
 
 
@@ -54,7 +55,7 @@ class BooksController < ApplicationController
 
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :profile_image)
   end
 
 

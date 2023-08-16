@@ -18,10 +18,11 @@
 			        <td><%= image_tag @user.get_profile_image(100,100) %><br><%= link_to @user.name, user_path(@user.id) %></td>
 			        <td><%= link_to @book_find.title, book_path(@book_find.id) %></td>
 			        <td><%= @book_find.body %></td>
+			      
 			      <% if @book_find.user == current_user %>
 			        <td><%= link_to "Edit", edit_book_path(@book_find.id), class: "btn btn-success" %></td>
 			        <td><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
-            <% end %>
+              <% end %>
 		        </tr>
 	        </tbody>
         </table>

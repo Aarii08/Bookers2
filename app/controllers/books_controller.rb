@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  
+  before_action :authenticate_user!
+
 
   def index
     @books = Book.all
@@ -39,7 +42,6 @@ class BooksController < ApplicationController
       flash.now[:alert] = "error prohibited this obj from being saved:"
       render :edit
     end
-
   end
 
 
@@ -50,14 +52,11 @@ class BooksController < ApplicationController
   end
 
 
-
   private
 
 
   def book_params
     params.require(:book).permit(:title, :body, :profile_image)
   end
-
-
-
+  
 end

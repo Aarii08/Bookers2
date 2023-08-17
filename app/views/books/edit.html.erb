@@ -1,30 +1,37 @@
 <h1>Books#edit</h1>
 
-<% flash.each do |message_type, message| %>
-  <div class="h4"><%= message %></div>
-<% end %>
-
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
-      <h2>Editing Book</h2>
-
+    <div class="col-md-8 mx-auto">
+      <h1>Editing Book</h1>
+      
+        <div class="h5">
+          <% if @book.errors.any? %>
+            <%= @book.errors.count %>件のerrorが発生しました
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+          <% end %>
+        </div>
+        
         <%= form_with model: @book, method: :patch do |f| %>
-
+        
           <p>Title</p>
             <%= f.text_field :title %>
-
+            
           <p>Opinion</p>
             <%= f.text_area :body %>
           <p>
             <%= f.submit 'Update Book', class: "btn btn-success" %>
           </p>
         <% end %>
-
+        
           <%= link_to "Show", book_path(params[:id]) %>
             |
           <%= link_to "Back", books_path %>
-
+          
     </div>
   </div>
 </div>

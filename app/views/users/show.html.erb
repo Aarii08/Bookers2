@@ -1,17 +1,19 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
 <% flash.each do |message_type, message| %>
   <div class="h4"><%= message %></div>
 <% end %>
+
+
+
 
 <div class="container">
   <div class="row">
 
     <%= render "books/list", user: @user, book: @book %>
 
-    <div class="col-8 offset-1">
-      <h2>Books</h2>
+    <div class="col-md-8 offset-md-1">
+      <h1>Books</h1>
 
       <table class="table">
         <thead>
@@ -24,7 +26,9 @@
         <tbody>
           <% @books.each do |book| %>
 		      <tr>
-			      <td><%= image_tag @user.get_profile_image(100,100) %></p></td>
+		        <td><%= link_to user_path(@user.id) do %>
+			          <%= image_tag @user.get_profile_image(100,100) %>
+			          <% end %></td>
 			      <td><%= link_to book.title, book_path(book.id) %></td>
 			      <td><%= book.body %></td>
 		      </tr>

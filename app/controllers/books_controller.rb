@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  
+
   before_action :authenticate_user!
 
 
@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
     @user = current_user
+
   end
 
   def create
@@ -18,7 +19,6 @@ class BooksController < ApplicationController
     else
       @user = current_user
       @books = Book.all
-      flash.now[:alert] = "error prohibited this obj from being saved:"
       render :index
     end
   end
@@ -30,6 +30,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @book = Book.find(params[:id])
   end
 
@@ -39,7 +40,6 @@ class BooksController < ApplicationController
       flash[:notice] = "updated book successfully!!"
       redirect_to book_path(@book.id)
     else
-      flash.now[:alert] = "error prohibited this obj from being saved:"
       render :edit
     end
   end
@@ -58,5 +58,17 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body, :profile_image)
   end
-  
+
+
+  def is_matching_login_user
+    book = Book.find(params[:id])
+    unless book.user.id == current_user.id
+      redirect_to books_path
+    end
+  end
+
+
+
+
+
 end

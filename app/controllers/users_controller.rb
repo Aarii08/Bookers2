@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     @books = @user.books
     @book = Book.new
   end
@@ -26,9 +27,9 @@ class UsersController < ApplicationController
       flash[:notice] = "updated user successfully!!"
       redirect_to user_path(params[:id])
     else
-      flash.now[:alert] = "error prohibited this obj from being saved:"
       render :edit
     end
+    
   end
 
 

@@ -19,11 +19,14 @@
 
             <ul class="navbar-nav ml-auto">
               <li class="nav-link h5">
-                  <i class="fa-solid fa-house" style='color: #FFFFFF;'></i>
-                  <%= link_to "Home", root_path, class: "link text-light text-decoration-none" %>
+
               </il>
              <% if user_signed_in? %>
-
+             
+              <li class="nav-link h5">
+               <i class="fa-solid fa-home" style="color: #FFFFFF;"></i>
+                  <%= link_to "Home", user_path(current_user), class: "link text-light text-decoration-none" %>
+              </li>  
               <li class="nav-link h5">
                 <i class="fa-solid fa-users" style="color: #FFFFFF;"></i>
                   <%= link_to "Users", users_path, class: "link text-light text-decoration-none" %>
@@ -33,20 +36,22 @@
                   <%= link_to "Books", books_path, class: "link text-light text-decoration-none" %>
               </li>
               <li class="nav-link h5">
-                <i class="fa-solid fa-right-from-bracket" style="color: #FFFFFF;"></i>
+                <i class="fa-solid fa-sign-out-alt" style="color: #FFFFFF;"></i>
                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "link text-light text-decoration-none" %>
               </li>
               <% else %>
+              <i class="fa-solid fa-home" style='color: #FFFFFF;'></i>
+                  <%= link_to "Home", root_path, class: "link text-light text-decoration-none" %>
               <li class="nav-link h5">
                 <i class="fa-solid fa-link" style="color: #FFFFFF;"></i>
                   <%= link_to "About", about_path, class: "link text-light text-decoration-none" %>
               </li>
               <li class="nav-link h5">
                 <i class="fa-solid fa-user-plus" style="color: #FFFFFF;"></i>
-                  <%= link_to "Sing Up", new_user_registration_path, class: "link text-light text-decoration-none" %>
+                  <%= link_to "Sign up", new_user_registration_path, class: "link text-light text-decoration-none" %>
               </li>
               <li class="nav-link h5">
-                <i class="fa-solid fa-right-to-bracket" style="color: #FFFFFF;"></i>
+                <i class="fa-solid fa-sign-in-alt" style="color: #FFFFFF;"></i>
                 <%= link_to "Log in", new_user_session_path, class: "link text-light text-decoration-none" %>
               </li>
             </ul>

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit]
 
-
   def index
     @users = User.all
     @book = Book.new
@@ -45,6 +44,5 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user.id)
     end
   end
-
 
 end

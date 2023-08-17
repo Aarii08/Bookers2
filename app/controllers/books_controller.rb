@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   before_action :authenticate_user!
-
+  before_action :is_matching_login_user, only: [:edit]
 
   def index
     @books = Book.all
@@ -30,7 +30,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    is_matching_login_user
     @book = Book.find(params[:id])
   end
 
@@ -66,9 +65,5 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-
-
-
-
 
 end

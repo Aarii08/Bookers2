@@ -1,28 +1,27 @@
-<h1>Books#show</h1>
 
-<% flash.each do |message_type, message| %>
-  <div class="h4"><%= message %></div>
-<% end %>
-
+  <% flash.each do |message_type, message| %>
+    <div class="h4"><%= message %></div>
+  <% end %>
+  
 <div class="container">
-  <div class="row">
-
+  
+  <div class="row mt-5">
+    
     <%= render "list", user: @user, book: @book %>
-
+    
       <div class="col-md-8 offset-md-1">
         <h1>Book detail</h1>
-
+        
         <table class="table">
           <tbody>
 		        <tr>
 			        <td><%= image_tag @user.get_profile_image(100,100) %><br><%= link_to @user.name, user_path(@user.id) %></td>
 			        <td><%= link_to @book_find.title, edit_book_path(@book_find.id) %></td>
 			        <td><%= @book_find.body %></td>
-
+			        
 			      <% if @book_find.user == current_user %>
 			        <td><%= link_to "Edit", edit_book_path(@book_find.id), class: "btn btn-success" %></td>
 			        <td><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
-
               <% end %>
 		        </tr>
 	        </tbody>

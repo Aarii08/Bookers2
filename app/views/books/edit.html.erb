@@ -3,7 +3,7 @@
   <div class="row mt-5">
     <div class="col-md-8 mx-auto">
       <h1>Editing Book</h1>
-      
+
         <div class="h5">
           <% if @book.errors.any? %>
             <%= @book.errors.count %>件のerrorが発生しました
@@ -14,19 +14,19 @@
           </ul>
           <% end %>
         </div>
-        
+
         <%= form_with model: @book, method: :patch do |f| %>
-        
+
           <p>Title</p>
             <%= f.text_field :title %>
-            
+
           <p>Opinion</p>
             <%= f.text_area :body %>
           <p>
             <%= f.submit 'Update Book', class: "btn btn-success" %>
           </p>
         <% end %>
-        
+
           <%= link_to "Show", book_path(params[:id]) %>
             |
           <%= link_to "Back", books_path %>
